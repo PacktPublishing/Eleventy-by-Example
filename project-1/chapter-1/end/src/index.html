@@ -1,16 +1,10 @@
 ---
 layout: "layouts/base.html"
-title: "This is my homepage"
-bannerContent: "This is my banner content"
-pageId: "home"
-triptychs:
-    - headline: "Triptych 1"
-      content: "Triptych 1 content"
-    - headline: "Triptych 2"
-      content: "Triptych 2 content"
-    - headline: "Triptych 3"
-      content: "Triptych 3 content"
 ---
+<section class="banner">
+  <h1>This is my homepage banner</h1>
+  <p>This is my banner content</p>
+</section>
 
 <section class="triptych">
     {% for triptych in triptychs %}
