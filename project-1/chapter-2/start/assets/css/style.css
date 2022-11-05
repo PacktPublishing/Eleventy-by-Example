@@ -1,0 +1,94 @@
+/* Super simple reset */
+* {
+  box-sizing: border-box;
+}
+
+/* Basic styles */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+
+/* Navigation */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav {
+  padding: 1rem;
+}
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+nav ul li a {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  color: tomato;
+}
+nav ul li.active a {
+  color: #fff;
+  background-color: tomato;
+}
+
+/* Banner */
+.banner {
+  background: lightblue;
+  min-height: 10vh;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.banner--home {
+    min-height: 50vh;
+}
+
+/* Triptych */
+.triptych {
+  display: flex;
+  gap: 1rem;
+  padding: 3rem;
+}
+.triptych__item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+.triptych__item--image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+.triptych__item--title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1rem 0;
+}
+.triptych__item--description {
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Footer */
+.footer {
+  padding: .5rem;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
