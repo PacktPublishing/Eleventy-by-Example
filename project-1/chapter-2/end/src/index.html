@@ -3,17 +3,10 @@ layout: "layouts/base.html"
 title: "This is my homepage"
 bannerContent: "This is my banner content"
 pageId: "home"
-triptychs:
-    - headline: "Triptych 1"
-      content: "Triptych 1 content"
-    - headline: "Triptych 2"
-      content: "Triptych 2 content"
-    - headline: "Triptych 3"
-      content: "Triptych 3 content"
 ---
 
 <section class="triptych">
-    {% for triptych in triptychs %}
-        {% include "includes/triptych.html" %}
-    {% endfor %}
+  {% for triptych in triptychs %} 
+    {% include "includes/card.html", headline: triptych.headline, content: triptych.content %} 
+  {% endfor %}
 </section>

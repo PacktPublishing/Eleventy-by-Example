@@ -1,13 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ title }} – {{ site.name }}</title>
+    <title>My amazing title</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
+<body><script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='/browser-sync/browser-sync-client.js?v=2.27.10'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+
     
     <header class="site-header">
         <svg width="46" height="15" viewBox="0 0 46 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,5 +20,33 @@
             </g>
         </svg>
             
-        {% include "includes/navigation.html" %}
+        
+
+<nav>
+    <ul>
+        <li ><a href="/">Home</a></li>
+        <li ><a href="/about">About</a></li>
+    </ul>
+</nav>
     </header>
+
+
+<h2>The page content can go here</h2>
+<p>It can use any markdown, since we're in a markdown page. Like <a href="https://packtpub.com">an anchor</a> or <strong>bold text</strong>.</p>
+<ul>
+<li>Or an unordered list</li>
+<li>With some items</li>
+</ul>
+<ol>
+<li>Or an ordered list</li>
+<li>With some items</li>
+</ol>
+
+
+<footer class="footer">
+    <p>Copyright 2022</p>
+</footer>
+
+
+</body>
+</html>

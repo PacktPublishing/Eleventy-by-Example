@@ -1,8 +1,6 @@
 ---
-layout: "layouts/base.html"
-title: "About us"
-bannerContent: "This is a little paragraph about the company."
-pageId: "about"
+title: "History"
+bannerContent: "This is a little paragraph to start talking about the history of the company."
 ---
 
 ## The page content can go here

@@ -1,5 +1,6 @@
 ---
-layout: "layouts/base.html"
+title: "About us"
+bannerContent: "This is a little paragraph about the company."
 ---
 
 ## The page content can go here

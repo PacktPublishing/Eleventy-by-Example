@@ -1,13 +1,25 @@
 ---
 layout: "layouts/base.html"
 ---
+
 <section class="banner">
   <h1>This is my homepage banner</h1>
   <p>This is my banner content</p>
 </section>
 
-<section class="triptych">
-    {% for triptych in triptychs %}
-        {% include "includes/triptych.html" %}
-    {% endfor %}
-</section>
+  <section class="triptych">
+    <div class="triptych__item">
+      <h2>Triptych 1</h2>
+      <p>Triptych 1 content</p>
+    </div>
+
+    <div class="triptych__item">
+      <h2>Triptych 2</h2>
+      <p>Triptych 2 content</p>
+    </div>
+
+    <div class="triptych__item">
+      <h2>Triptych 3</h2>
+      <p>Triptych 3 content</p>
+    </div>
+  </section>

@@ -1,0 +1,16 @@
+{
+    "triptychs": [
+        {
+            "headline": "Triptych 1",
+            "content": "Triptych 1 content!"
+        },
+        {
+            "headline": "Triptych 2",
+            "content": "Triptych 2 content!"
+        },
+        {
+            "headline": "Triptych 3",
+            "content": "Triptych 3 content!"
+        }
+    ]
+}
