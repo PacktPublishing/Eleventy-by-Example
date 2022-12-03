@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Blog Template</title>
     <!-- Bring your own CSS framework if you'd like -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    
   </head>
   <body class="bg-gray-100 font-sans leading-normal tracking-normal">
     <nav id="header" class="fixed w-full z-10 top-0">
@@ -38,10 +38,5 @@
 
       
     </nav>
+    <div class="container max-w-3xl px-4 mx-auto pt-20 prose">
 
-    <div class="container w-full md:max-w-3xl mx-auto pt-20">
-        {{ content }}
-    </div>
-
-  </body>
-</html>

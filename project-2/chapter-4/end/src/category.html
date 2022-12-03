@@ -1,0 +1,21 @@
+---
+layout: layouts/base.html
+# Default permalink scheme (still able to be customized)
+permalink: /posts/category/{{category.permalinkScheme}}
+pagination:
+  data: collections.categoriesByPage
+  size: 1
+  alias: category
+  addAllPagesToCollections: true
+eleventyComputed:
+  title: Blog entries with category &quot;{{ category.slug }}&quot; 
+---
+
+{% for post in category.posts %}
+<li>
+    <a href="{{post.url}}">{{ post.data.title }}</a>
+</li>
+{% endfor %}
+
+<!-- Helper function -->
+{% pagination category %}

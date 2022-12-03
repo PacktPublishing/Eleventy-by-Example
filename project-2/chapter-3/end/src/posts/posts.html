@@ -1,0 +1,25 @@
+---
+title: "All Posts"
+eleventyExcludeFromCollections: true
+layout: 'layouts/base.html'
+pagination:
+  data: collections.post
+  size: 2
+  alias: posts
+---
+{% for post in posts %}
+    <article>
+        <h2 class="mb-1">
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h2>
+        <p>By {{ post.data.author }} | Posted on {{ post.data.dateString }}</p>
+
+        {% if post.data.description %}
+            <p>{{ post.data.description }}</p>
+        {% endif %}
+    </article>
+{% endfor %}
+
+{% if pagination.hrefs.length > 1 %}
+    {% include "includes/pagination.html" %}
+{% endif %}

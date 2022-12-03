@@ -1,0 +1,18 @@
+<!-- If there's a previous href, have previous be a link -->
+{% if pagination.href.previous %}
+    <a href="{{ pagination.href.previous }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Previous</a>
+{% else %}
+    <span class="bg-gray-200 text-gray-500 font-bold py-2 px-4 rounded">Previous</span>
+{% endif %}
+
+<!-- Loop through all hrefs and build out an anchor for each and the page number (based on the loop counter) -->
+{% for item in pagination.hrefs %}
+    <a href="{{ item }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{ forloop.index }}</a>
+{% endfor %}
+
+<!-- If there's a next href, have next be a link -->
+{% if pagination.href.next %}
+    <a href="{{ pagination.href.next }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Next</a>
+{% else %}
+    <span class="bg-gray-200 text-gray-500 font-bold py-2 px-4 rounded">Next</span>
+{% endif %}

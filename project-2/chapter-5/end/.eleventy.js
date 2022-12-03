@@ -10,6 +10,16 @@ module.exports = function(eleventyConfig) {
         perPageCount: 10 // Items per page of your paginated category (default: 5)
     })
 
+    eleventyConfig.addShortcode("youtube", (url, title) => {
+        return `<iframe 
+            style="aspect-ratio: 16 / 9; width: 100%" 
+            src="${url}" 
+            title="${title}" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>`
+    })
+
 
     // Copy `assets/` to `_site/assets/`
     eleventyConfig.addPassthroughCopy("assets");
