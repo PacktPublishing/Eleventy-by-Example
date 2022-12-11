@@ -1,0 +1,22 @@
+---
+layout: 'layouts/home.html'
+title: The Photogarphy blog of /Your Name/
+tagline: Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+---
+
+<h2 class="text-4xl font-bold mb-3">Recent Photostories</h2>
+
+<ul class="grid gap-3" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr))">
+{% for post in collections.posts %}
+    <li class="max-w-sm flex-1 rounded overflow-hidden shadow-lg">
+        <a href="{{post.url}}" class="block">
+            {% image post.data.images.0 "" "(min-width: 30em) 50vw, 100vw" %}
+            <div class="px-6 py-4">
+                <h3 class="font-bold text-xl mb-2">{{ post.data.title }}</h3></a>
+                <p class="text-gray-700 text-base">{{ post.data.description }}</p>
+              </div>
+            
+            
+    </li>
+{% endfor %}
+</ul>

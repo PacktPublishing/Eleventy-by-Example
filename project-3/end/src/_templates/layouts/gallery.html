@@ -1,0 +1,20 @@
+{% include 'includes/header.html' %}
+
+    <div class="container max-w-3xl px-4 mx-auto pt-20 prose mb-5">
+
+        {% if title %}<h1>{{ title }}</h1>{% endif %}
+
+        {{ content }} 
+
+    </div>  
+
+
+    <div class="grid grid-cols-3 gap-5 flex-wrap gallery">
+        {% for image in images %}
+            <div class="w-full">
+                {% image image "this is an alt" "(min-width: 30em) 50vw, 100vw" "300, 500,900" %}
+            </div>
+        {% endfor %}
+    </div>
+
+{% include 'includes/footer.html' %}
