@@ -8,13 +8,47 @@
 
     </div>  
 
-
     <div class="grid grid-cols-3 gap-5 flex-wrap gallery">
         {% for image in images %}
+        
             <div class="w-full">
-                {% image image "this is an alt" "(min-width: 30em) 50vw, 100vw" "300, 500,900" %}
+                <a class="opener" data-index="{{forloop.index}}" href="{{ image }}">
+                {% image image "this is an alt" "(min-width: 30em) 50vw, 100vw" "300, 500, 900" %}
+                </a>
+                <div tabindex="-1" aria-hidden="true" class="modal modal{{forloop.index}} fixed top-0 left-0 right-0 bottom-0 z-50 bg-gray-700/[.75] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
+                    <button type="button" class="closeButton text-gray-100 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-4xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
+                        <svg aria-hidden="true" class="w-10 h-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div style="top: 50%; transform: translateY(-50%)" class="relative m-auto w-full h-full max-w-6xl md:h-auto">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                            {% image image "this is an alt" "(min-width: 30em) 50vw, 100vw" "1000, 1500" %}
+
+                        </div>
+                    </div>
+                </div>
             </div>
+            
         {% endfor %}
     </div>
-
+    <script>
+        const openers = document.querySelectorAll('.opener');
+        openers.forEach(opener => {
+            opener.addEventListener('click', function(e) {
+                e.preventDefault();
+                const index = this.dataset.index;
+                const modal = document.querySelector(`.modal${index}`);
+                modal.classList.remove('hidden');
+            });
+        });
+        const closeButtons = document.querySelectorAll('.closeButton');
+        closeButtons.forEach(closeButton => {
+            closeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const modal = this.closest('.modal');
+                modal.classList.add('hidden');
+            });
+        });
+    </script>
 {% include 'includes/footer.html' %}

@@ -1,18 +1,14 @@
 {% include 'includes/header.html' %}
 
-{% unless posttype == "full" %}
 <div class="container max-w-3xl px-4 mx-auto pt-20 prose">
 
 {% if title %}<h1>{{ title }}</h1>{% endif %}
 
-{% endunless %}
-
-
     {{ content }}
     
     {% for image in images %}
-        {% image image "this is an alt" "(min-width: 30em) 50vw, 100vw" "300, 500, 1000" %}
+        {% image image "this is an alt" "(max-width: 500px) 300px, (max-width: 1000px) 500px, 100vw" "300, 500, 1000" %}
     {% endfor %}
 
-
+</div>
 {% include 'includes/footer.html' %}
