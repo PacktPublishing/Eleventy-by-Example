@@ -13,7 +13,7 @@
         
             <div class="w-full">
                 <a class="opener" data-index="{{forloop.index}}" href="{{ image }}">
-                {% image image "this is an alt" "(min-width: 30em) 50vw, 100vw" "300, 500, 900" %}
+                {% image image "this is an alt" "(max-width: 900px) 300px, (max-width: 1500px) 500px, 100vw" "300, 500, 900" %}
                 </a>
                 <div tabindex="-1" aria-hidden="true" class="modal modal{{forloop.index}} fixed top-0 left-0 right-0 bottom-0 z-50 bg-gray-700/[.75] hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full">
                     <button type="button" class="closeButton text-gray-100 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-4xl p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="defaultModal">
