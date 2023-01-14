@@ -1,0 +1,16 @@
+---
+permalink: 'algoliaIndex.json'
+---
+[
+{% for episode in collections.episodes %}
+{%- set absolutePostUrl = episode.url | absoluteUrl(site.url) %}
+    {
+        "objectID": "{{ episode.data.page.fileSlug }}",
+        "title": "{{ episode.data.title }}",    
+        "date": "{{ episode.data.date }}",
+        "url": "{{absolutePostUrl}}",
+        "content": "{{ episode.templateContent | algoliaPrep | jsonify}}"
+
+    }{% if not loop.last %},{% endif  %}
+    {% endfor %}
+]

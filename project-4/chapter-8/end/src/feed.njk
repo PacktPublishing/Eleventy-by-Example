@@ -1,0 +1,52 @@
+---
+permalink: '/feed.xml'
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"  xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <title>{{ site.name }}</title>
+  <link href="{{ site.url }}{{ permalink }}" rel="self" />
+  <link href="{{ site.url }}/" />
+  <updated>{{ collections.episodes | getNewestCollectionItemDate | dateToRfc822 }}</updated>
+  <id>{{ site.url }}</id>
+  <language>en-US</language>
+  <itunes:author>{{ site.authorName }}</itunes:author>
+  <itunes:owner>
+    <itunes:name>{{ site.authorName }}</itunes:name>
+    <itunes:email>{{ site.authorEmail }}</itunes:email>
+  </itunes:owner>
+  <description><![CDATA[{{ site.description }}]]></description>
+  <itunes:explicit>no</itunes:explicit>
+  <itunes:type>episodic</itunes:type>
+  {% for category in site.categories %}
+    <itunes:category text="{{ category }}" />
+  {% endfor %}
+
+  {% if site.image %}
+    <itunes:image href="{{ site.image }}" />
+    <image>
+      <title>{{ site.name }}</title>
+      <link>{{ site.url }}</link>
+      <url>{{ site.image }}</url>
+    </image>
+  {% endif %}
+
+  {% for post in collections.episodes %}
+    {%- set absolutePostUrl = post.url | absoluteUrl(site.url) %}
+    {%- set audioPath = eleventy.env.root + post.data.audioUrl -%}
+    <item>
+<enclosure
+    url="{{absolutePostUrl}}"
+    length="{{ audioPath | filesize }}"
+    type="audio/mpeg"
+/>
+      <title>{{ post.data.title }}</title>
+      <link href="{{ absolutePostUrl }}" />
+      <updated>{{ post.date | dateToRfc822 }}</updated>
+      <id>{{ absolutePostUrl }}</id>
+      <content type="html">
+        <![CDATA[
+    ]]>
+      </content>
+    </item>
+  {% endfor %}
+</rss>

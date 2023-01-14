@@ -1,0 +1,8 @@
+{
+    "url": "https://mypodcast.com",
+    "name": "My Podcast",
+    "authorName": "My Name",
+    "authorEmail": "me@myemail.com",
+    "description": "This is my amazing podcast",
+    "categories": ["Technology", "News", "Tech News"]
+}

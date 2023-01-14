@@ -1,0 +1,8 @@
+---
+layout: layouts/base.html
+title: Episodes
+---
+
+{% for episode in collections.episodes %}
+    <h3><a href="{{ episode.url }}">{{ episode.data.title }}</a></h3>
+{% endfor %}
