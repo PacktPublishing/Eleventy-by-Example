@@ -1,0 +1,11 @@
+---
+layout: 'layouts/home.html'
+title: The amazing Podcast of /Your Name/
+tagline: Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.
+---
+
+<h2 class="text-4xl font-bold mb-3">Recent Episodes</h2>
+
+{% for episode in hygraph.episodes %}
+    <h3><a href="/episodes/{{ episode.slug }}">{{ episode.title }}</a></h3>
+{% endfor %}

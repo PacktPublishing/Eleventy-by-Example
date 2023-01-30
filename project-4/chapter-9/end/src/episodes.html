@@ -1,0 +1,10 @@
+---
+layout: layouts/base.html
+title: Episodes
+---
+
+{% for episode in hygraph.episodes %}
+{{episode.slug |log}}
+
+    <h3><a href="/episodes/{{ episode.slug }}">{{ episode.title }}</a></h3>
+{% endfor %}

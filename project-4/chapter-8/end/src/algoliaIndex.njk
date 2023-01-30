@@ -9,8 +9,8 @@ permalink: 'algoliaIndex.json'
         "title": "{{ episode.data.title }}",    
         "date": "{{ episode.data.date }}",
         "url": "{{absolutePostUrl}}",
-        "content": "{{ episode.templateContent | algoliaPrep | jsonify}}"
+        "content": "{{ episode.templateContent | htmlStrip | jsonify }}"
 
     }{% if not loop.last %},{% endif  %}
-    {% endfor %}
+{% endfor %}
 ]

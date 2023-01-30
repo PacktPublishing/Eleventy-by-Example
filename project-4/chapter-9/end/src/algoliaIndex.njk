@@ -1,0 +1,18 @@
+---
+permalink: 'algoliaIndex.json'
+---
+[
+{% for episode in hygraph.episodes %}
+{%- set fullUrl = "/episodes/" + episode.slug  %}
+{%- set absolutePostUrl = fullUrl | absoluteUrl(site.url) %}
+
+    {
+        "objectID": "{{ episode.slug }}",
+        "title": "{{ episode.title }}",    
+        "date": "{{ episode.publishDate }}",
+        "url": "{{ absolutePostUrl }}",
+        "content": "{{ episode.body.text }}"
+
+    }{% if not loop.last %},{% endif  %}
+{% endfor %}
+]

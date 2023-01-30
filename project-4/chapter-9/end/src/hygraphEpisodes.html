@@ -1,0 +1,17 @@
+---
+pagination:
+  data: hygraph.episodes
+  size: 1
+  alias: episode
+permalink: "/episodes/{{ episode.slug }}/"
+layout: "layouts/base.html"
+eleventyComputed:
+  title: "{{ episode.title }}"
+  audioUrl: "{{ episode.audioFile.url }}"
+---
+
+
+{% include 'includes/player.html' %}
+
+
+{{ episode.body.html }}

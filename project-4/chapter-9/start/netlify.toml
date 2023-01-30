@@ -1,0 +1,6 @@
+[[redirects]]
+from = "/search/"
+to = "/.netlify/functions/search"
+status = 200
+force = true
+_generated_by_eleventy_serverless = "search"

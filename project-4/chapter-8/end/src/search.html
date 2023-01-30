@@ -4,9 +4,6 @@ title: Search Page
 permalink:
   search: /search/
 ---
-{% assign query =  eleventy.serverless.query.q %}
-{% assign results =  query | search %}
-
 
 <form action="/search/" class="input-group relative flex items-stretch w-full mb-4">
     <label for="q" class="sr-only">Search</label>
@@ -18,18 +15,19 @@ permalink:
     </button>
 </form>
 
-      
+{% assign query =  eleventy.serverless.query.q %}
+{% assign results =  query | search %}
+
 {% if eleventy.serverless.query.q == undefined or results.size == 0  %}
     <p class="is-size-5">No results found</p>
     {% else %}
     <h2 class="is-size-3 mb-3">Searching for "{{ eleventy.serverless.query.q }}"</h2>
 
     {% for result in results %}
-
-    <h3 class="is-size-4 mb-2">
-        <a href="{{ result.url }}">{{ result._highlightResult.title.value }}</a>
+        <h3 class="is-size-4 mb-2">
+            <a href="{{ result.url }}">{{ result._highlightResult.title.value }}</a>
+        </h3>
         <p>{{ result._snippetResult.content.value }}</p>
-    </h3>
-{% endfor %}
+    {% endfor %}
 {% endif %}
 
