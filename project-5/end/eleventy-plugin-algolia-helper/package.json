@@ -1,0 +1,18 @@
+{
+  "name": "eleventy-plugin-algolia-helper-brob",
+  "version": "0.0.1",
+  "description": "",
+  "main": ".eleventy.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^1.0.2",
+    "algoliasearch": "^4.14.3",
+    "dotenv": "^16.0.3"
+  }
+}

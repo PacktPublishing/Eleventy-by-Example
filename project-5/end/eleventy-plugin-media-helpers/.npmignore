@@ -1,0 +1,4 @@
+_site
+.env
+index.md
+_includes

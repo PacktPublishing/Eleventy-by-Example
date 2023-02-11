@@ -1,0 +1,13 @@
+{
+  "name": "eleventy-plugin-hygraph-data",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

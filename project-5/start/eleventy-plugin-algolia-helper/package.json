@@ -1,0 +1,13 @@
+{
+  "name": "eleventy-plugin-algolia-helper",
+  "version": "0.0.",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -25,8 +25,7 @@ eleventyConfig.addFilter("search", (query) => {
         attributesToRetrieve: ["title", "url"],
     
         }).then(res => {
-            console.log(JSON.stringify(res.hits, null, 2))
-        return res.hits;
+            return res.hits;
         })
 })
         

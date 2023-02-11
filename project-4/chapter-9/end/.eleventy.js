@@ -3,14 +3,15 @@ const podcastTools = require('eleventy-plugin-podcast-tools');
 const algoliasearch = require('algoliasearch');
 const algoliasearchlite = require('algoliasearch/lite')
 const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");  
-
+const hygraphDataPlugin = require('../../../project-5/end/eleventy-plugin-hygraph-data')
 require('dotenv').config();
 module.exports = function(eleventyConfig) {
 
 
-    // Add data to the global data object
-    eleventyConfig.addGlobalData("hygraph", async function(){
-        const query = `query HygraphData {
+    eleventyConfig.addPlugin(hygraphDataPlugin, {
+        dataKey: "hygraph",
+        endpoint: process.env.HYGRAPH_ENDPOINT,
+        query: `query HygraphData {
             episodes(orderBy: publishDate_DESC) {
               audioFile {
                 id
@@ -27,19 +28,8 @@ module.exports = function(eleventyConfig) {
               }
             }
           }`
-        const response = await fetch(process.env.HYGRAPH_ENDPOINT, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({query})
-            
-        })
-        const json = await response.json()
-        return json.data
     })
-
-
+                
     eleventyConfig.addPlugin(pluginRss);
     eleventyConfig.addPlugin(podcastTools);
 
