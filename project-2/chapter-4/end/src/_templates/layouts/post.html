@@ -6,8 +6,8 @@
 {{ content }}
 <!-- create nextPost and previousPost variables -->
 <!-- Set the variables to the next and previous items on the collections.post Collection -->
-{% assign nextPost = collections.post | getNextCollectionItem: page %}
-{% assign previousPost = collections.post | getPreviousCollectionItem: page %}
+{% assign nextPost = collections.post | getNextCollectionItem %}
+{% assign previousPost = collections.post | getPreviousCollectionItem %}
 
 {% if nextPost %}
     <div class="mt-4">
