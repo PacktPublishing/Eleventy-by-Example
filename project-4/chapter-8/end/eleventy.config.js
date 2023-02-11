@@ -36,7 +36,7 @@ eleventyConfig.addFilter("search", (query) => {
       });  
 
 
-eleventyConfig.on('eleventy.after', async ({ dir, runMode, results }) => {
+eleventyConfig.on('eleventy.after', async ({ dir }) => {
 
     // Short circuit if we're not in production according to Netlify
     if (process.env.CONTEXT !== "PRODUCTION") return

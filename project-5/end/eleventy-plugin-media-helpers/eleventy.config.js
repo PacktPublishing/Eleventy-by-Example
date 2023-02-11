@@ -1,7 +1,6 @@
 const markdownIt = require("markdown-it");
-const stripWhitespace = (str) => {
-    return str.replace(/(\r\n|\n|\r)/gm, "").trim()
-}
+
+
 module.exports = function(eleventyConfig) {
     eleventyConfig.addShortcode("youtube", (id, title="A YouTube Video") => {
         return `<iframe 
@@ -31,7 +30,7 @@ module.exports = function(eleventyConfig) {
         </div>
         <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
         `;
-        return stripWhitespace(markup)
+        return markup
     })
 
     eleventyConfig.addPairedShortcode("blockquote", (content, author, cite, float=false) => {
@@ -45,6 +44,6 @@ module.exports = function(eleventyConfig) {
                 By ${author} in <cite>${cite}</cite>
             </figcaption>
         </figure>`
-        return stripWhitespace(markup)
+        return markup
     })
 }

@@ -2,7 +2,7 @@
   "name": "eleventy-plugin-algolia-helper-brob",
   "version": "0.0.1",
   "description": "",
-  "main": ".eleventy.js",
+  "main": "eleventy.config.js",
   "scripts": {
     "dev": "eleventy --serve",
     "build": "eleventy"
