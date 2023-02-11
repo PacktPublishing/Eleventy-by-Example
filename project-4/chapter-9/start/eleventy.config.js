@@ -18,17 +18,17 @@ module.exports = function(eleventyConfig) {
         return content.replace(/(<([^>]+)>)/gi, "");
     })
 
-eleventyConfig.addFilter("search", (query) => {
-    const client = algoliasearchlite(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
-    const index = client.initIndex(process.env.INDEX_NAME);
-    return index.search(query, {
-        attributesToRetrieve: ["title", "url"],
-    
-        }).then(res => {
-            console.log(JSON.stringify(res.hits, null, 2))
-        return res.hits;
-        })
-})
+    eleventyConfig.addFilter("search", (query) => {
+        const client = algoliasearchlite(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
+        const index = client.initIndex(process.env.INDEX_NAME);
+        return index.search(query, {
+            attributesToRetrieve: ["title", "url"],
+        
+            }).then(res => {
+                console.log(JSON.stringify(res.hits, null, 2))
+            return res.hits;
+            })
+    })
         
     eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {  
         name: "search", // The serverless function name for the permalink object 
@@ -36,19 +36,18 @@ eleventyConfig.addFilter("search", (query) => {
       });  
 
 
-eleventyConfig.on('eleventy.after', async () => {
+      eleventyConfig.on('eleventy.after', async ({ dir, runMode, results }) => {
+
+        // Short circuit if we're not in production according to Netlify
+        if (process.env.CONTEXT !== "PRODUCTION") return
     
-    // Short circuit if we're not in production according to Netlify
-    if (process.env.CONTEXT !== 'production') return
-
-    const jsonContent = await require('./_site/algoliaIndex.json')
-
-    const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
-    const index = client.initIndex(process.env.INDEX_NAME);
-
-    index.saveObjects(jsonContent)        
-});
+        const jsonContent = await require(`./${dir.output}/algoliaIndex.json`)
     
+        const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
+        const index = client.initIndex(process.env.INDEX_NAME);
+    
+        index.saveObjects(jsonContent)        
+    });
 
 
 

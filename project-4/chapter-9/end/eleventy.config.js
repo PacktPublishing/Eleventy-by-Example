@@ -3,15 +3,13 @@ const podcastTools = require('eleventy-plugin-podcast-tools');
 const algoliasearch = require('algoliasearch');
 const algoliasearchlite = require('algoliasearch/lite')
 const { EleventyServerlessBundlerPlugin } = require("@11ty/eleventy");  
-const hygraphDataPlugin = require('../../../project-5/end/eleventy-plugin-hygraph-data')
+
 require('dotenv').config();
+
 module.exports = function(eleventyConfig) {
-
-
-    eleventyConfig.addPlugin(hygraphDataPlugin, {
-        dataKey: "hygraph",
-        endpoint: process.env.HYGRAPH_ENDPOINT,
-        query: `query HygraphData {
+ // Add data to the global data object
+ eleventyConfig.addGlobalData("hygraph", async function(){
+    const query = `query HygraphData {
             episodes(orderBy: publishDate_DESC) {
               audioFile {
                 id
@@ -28,6 +26,16 @@ module.exports = function(eleventyConfig) {
               }
             }
           }`
+          const response = await fetch(process.env.HYGRAPH_ENDPOINT, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({query})
+
+        })
+        const json = await response.json()
+        return json.data
     })
                 
     eleventyConfig.addPlugin(pluginRss);
@@ -46,17 +54,18 @@ module.exports = function(eleventyConfig) {
         return content.replace(/(<([^>]+)>)/gi, "");
     })
 
-eleventyConfig.addFilter("search", (query) => {
-    const client = algoliasearchlite(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
-    const index = client.initIndex(process.env.INDEX_NAME);
-    return index.search(query, {
-        attributesToRetrieve: ["title", "url"],
-    
-        }).then(res => {
-            console.log(JSON.stringify(res.hits, null, 2))
-        return res.hits;
-        })
-})
+    eleventyConfig.addFilter("search", (query) => {
+        const client = algoliasearchlite(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
+        const index = client.initIndex(process.env.INDEX_NAME);
+        
+        return index.search(query, {
+            attributesToRetrieve: ["title", "url"],
+        
+            }).then(res => {
+                console.log(res.hits)
+                return res.hits;
+            })
+    })
         
     eleventyConfig.addPlugin(EleventyServerlessBundlerPlugin, {  
         name: "search", // The serverless function name for the permalink object 
@@ -64,19 +73,20 @@ eleventyConfig.addFilter("search", (query) => {
       });  
 
 
-eleventyConfig.on('eleventy.after', async () => {
+      
+      eleventyConfig.on('eleventy.after', async ({ dir, runMode, results }) => {
+        console.log('AFTER TIME')
+        // Short circuit if we're not in production according to Netlify
+        if (process.env.CONTEXT !== "PRODUCTION") return
+        console.log('AFTER TIME RUNNING IN PRODUCTION')
+
+        const jsonContent = await require(`./${dir.output}/algoliaIndex.json`)
     
-    // Short circuit if we're not in production according to Netlify
-    if (process.env.CONTEXT !== 'production') return
-
-    const jsonContent = await require('./_site/algoliaIndex.json')
-
-    const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
-    const index = client.initIndex(process.env.INDEX_NAME);
-
-    index.saveObjects(jsonContent)        
-});
+        const client = algoliasearch(process.env.ALGOLIA_APP_ID, process.env.ALGOLIA_API_KEY);
+        const index = client.initIndex(process.env.INDEX_NAME);
     
+        index.saveObjects(jsonContent)        
+    });
 
 
 

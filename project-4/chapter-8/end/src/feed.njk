@@ -45,7 +45,7 @@ permalink: '/feed.xml'
       <id>{{ absolutePostUrl }}</id>
       <content type="html">
         <![CDATA[
-      {{ post.templateContent }}
+        {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
     ]]>
       </content>
     </item>
