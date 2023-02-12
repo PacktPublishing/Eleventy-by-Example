@@ -13,9 +13,7 @@ categories:
 
 > This is a paragraph for a blog post.This is a paragraph for a blog post.This is a paragraph for a blog post.This is a paragraph for a blog post.
 {% blockquote "Bryan Robinson" "https://bryanlrobinson.com" %}
-
 This is a **blockquote** for a blog post. 
-
 * Including
 * List items!
 {% endblockquote %}

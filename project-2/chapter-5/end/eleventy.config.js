@@ -48,7 +48,7 @@ module.exports = function(eleventyConfig) {
         const markup = `
         <figure class="blockquote ${float ? `float-${float}` : ""}">
             <blockquote class="prose-quoteless">
-                ${contentHtml}
+                ${content}
             </blockquote>
             <figcaption class="blockquote cite">
                 By ${author} in <cite>${cite}</cite>
