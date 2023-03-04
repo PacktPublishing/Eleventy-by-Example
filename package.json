@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@11ty/eleventy": "^2.0.0",
     "eleventy-plugin-podcast-tools": "^0.0.3"
   }
 }
