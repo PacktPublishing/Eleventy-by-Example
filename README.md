@@ -25,20 +25,31 @@ If you feel this book is for you, get your [copy](https://www.amazon.com/Elevent
 <a href="https://www.packtpub.com/?utm_source=github&utm_medium=banner&utm_campaign=GitHubBanner"><img src="https://raw.githubusercontent.com/PacktPublishing/GitHub/master/GitHub.png" 
 alt="https://www.packtpub.com/" border="5" /></a>
 
-
 ## Instructions and Navigations
-All of the project files are organized into folders. For example, Chapter1.
+All of the code is organized into folders. For example, Project1.
 
-The source code can be cloned from `main` branch or downloaded from release area.
+The code will look like the following:
+```
+{% if title or bannerContent %}
+  <section class="banner">
+    {% if title %}<h1>{{ title }}</h1>{% endif %}
+    {% if bannerContent %}<p>{{ bannerContent }}</p>{% endif %}
+  </section>
+{% endif %}
+
+
+```
 
 **Following is what you need for this book:**
 
 11ty is the dark horse of the Jamstack world, offering unparalleled flexibility and performance that gives it an edge against other static site generators such as Jekyll and Hugo. With it, developers can leverage the complete Node ecosystem and create blazing-fast, static-first websites that can be deployed from a content delivery network or a simple server. This book will teach you how to set up, customize, and make the most of 11ty in no time.
 
 With the following software and hardware list you can run all code files present in the book (Chapter 1-10).
-Software/hardware covered in the book	Operating system requirements
-11ty 2.0	Windows, macOS, or Linux
-Node.js 18	Windows, macOS, or Linux
+### Software and Hardware List
+| Software required                    | OS required                         |
+| ------------------------------------ | ----------------------------------- |
+| 11ty 2.0                             | Windows, macOS, or Linux            |
+| Node.js 18                           | Windows, macOS, or Linux            |
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://packt.link/ERy5P).
 
